@@ -26,19 +26,4 @@ jobs:
           docker buildx create --use
           docker buildx inspect --bootstrap
           docker build -t webapp/ubuntu:latest .
-
-      - name: Configure AWS credentials
-          run:|
-            aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws configure set default.region ${{ secrets.AWS_REGION }}
-
-      - name: Tag Docker Image with ECR repository URI
-          run:|
-            docker tag webapp/ubuntu:latest ${{ 590184026299.dkr.ecr.eu-west-2.amazonaws.com/webapp }}/webapp/ubuntu:latest
-
-      - name: Push Docker Image to ECR
-          run:|
-            docker push ${{ 590184026299.dkr.ecr.eu-west-2.amazonaws.com/webapp }}/webapp/ubuntu:latest
-
    
