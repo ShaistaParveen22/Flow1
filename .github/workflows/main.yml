@@ -4,7 +4,6 @@ on:
   push:
     branches: 
         - master
-
 jobs:
   build:
     name: 'test'
@@ -15,7 +14,6 @@ jobs:
     defaults:
       run:
         shell: bash
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
